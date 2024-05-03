@@ -56,6 +56,9 @@ time_table_create = ("""CREATE TABLE IF NOT EXISTS  time(
 
 # INSERT RECORDS
 
+# songplay_table_insert = ("""INSERT INTO songplays VALUES (DEFAULT, to_timestamp(%s), %s, %s, %s, %s, %s, %s, %s )
+# """) # for if timestamp column type is int
+
 songplay_table_insert = ("""INSERT INTO songplays VALUES (DEFAULT, %s, %s, %s, %s, %s, %s, %s, %s )
 """)
 
@@ -79,8 +82,11 @@ artist_table_insert = ("""INSERT INTO artists (artist_id, name, location, latitu
                           longitude = EXCLUDED.longitude
 """)
 
+# time_table_insert = ("""INSERT INTO time VALUES (to_timestamp(%s), %s, %s, %s, %s, %s, %s) ON CONFLICT (start_time) DO NOTHING
+# """)  ## For if timestamp column type is int
+
 time_table_insert = ("""INSERT INTO time VALUES (%s, %s, %s, %s, %s, %s, %s) ON CONFLICT (start_time) DO NOTHING
-""")
+""")  ## For if timestamp column type is pandas timestamp
 
 # FIND SONGS
 

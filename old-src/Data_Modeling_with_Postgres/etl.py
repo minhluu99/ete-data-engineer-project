@@ -109,7 +109,7 @@ def main():
     """
     Driver function for loading songs and log data into Postgres database
     """
-    conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=postgres password=admin")
+    conn = psycopg2.connect("host=127.0.0.1 dbname=dwh_minh user=minh password=password")
     cur = conn.cursor()
 
     process_data(cur, conn, filepath='data/song_data', func=process_song_file)
